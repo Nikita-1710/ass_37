@@ -160,7 +160,7 @@
 
         function removeStudent() {
             const studIndex = meetGroup.indexOf(inputElement.value);
-            studIndex.value = "";
+            inputElement.value = "";
             meetGroup.splice(studIndex, 1);
             loadMeet();
         }
