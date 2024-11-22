@@ -40,6 +40,7 @@
             margin-top: 30px;
             color: white;
             border: none;
+            cursor: pointer;
         }
 
         .btn-primary{
@@ -84,9 +85,11 @@
             padding: 10px;
             width: 80%;
             margin: 10px auto;
-            font-size: 20px;
+            font-size: 18px;
             border-radius: 30px;
             text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border: 1px solid silver;
         }   
 
         .footer{
@@ -118,7 +121,7 @@
     </div>
     <div class="container">
         <div class="banner">
-            <input type="text" class="search-bar" placeholder="Search">
+            <input type="text" class="search-bar" id="search" placeholder="Search" onkeyup="searchResult()">
             <img src="./icon/search.png" alt="" class="search-icon">
 
             <div class="students" id="students">
@@ -141,9 +144,9 @@
         function loadMeet() {
             const studList = document.getElementById('students')
             studList.innerHTML = ""
-            for (let i = 0; i < meetGroup.length; i++) {
-                students.innerHTML += `<p class='student-card'> ${meetGroup[i]} </p>`;
-            }
+            meetGroup.forEach((stud)=>{
+                students.innerHTML += `<p class='student-card'> ${stud} </p>`;
+            })
         }
         loadMeet()
 
@@ -160,6 +163,20 @@
             studIndex.value = "";
             meetGroup.splice(studIndex, 1);
             loadMeet();
+        }
+
+        function searchResult() {
+            const searchElement = document.getElementById('search');
+            const searchText = searchElement.value.toLowerCase();
+            students.innerHTML = ''
+            const filteredStudents = meetGroup.filter((stud)=>{
+                if(stud.toLowerCase().includes(searchText)){
+                    return true
+                }
+            })
+            filteredStudents.forEach((stud)=>{
+                students.innerHTML += `<p class='student-card'> ${stud} </p>`;
+            })
         }
     </script>
 </body>
