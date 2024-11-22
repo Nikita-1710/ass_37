@@ -4,10 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #4d4d4d;
+        }
+
+        .container{
+            min-height: 90%;
+            background-color: aliceblue;
+            margin: 10px;
+            width: 25%;
+            position: fixed;
+            right: 0;
+
+        }
+
+        .footer{
+            width: 100%;
+            background-color: gray;
+            height: 60px;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .icon-container{
+            margin: 10px;
+            display: flex;
+        }
+
+        .action-icon{
+            display: block;
+            height: 40px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        
+        <div class="banner">
+            <input type="text">
+        </div>
     </div>
+    <div class="footer">
+        <div class="icon-container">
+            <img src="./icon/mic-on.png" class="action-icon" id="mic" onclick="changeStatus()">
+            <img src="./icon/hand-raise.png" class="action-icon" id="hand-raise">
+            <img src="./icon/video-on.png" class="action-icon" id="video">
+            <img src="./icon/end-call.png" class="action-icon" id="call">
+            <img src="./icon/students.png" class="action-icon" id="students">
+        </div>
+    </div>
+
+    <script>
+        const micElement = document.getElementById('mic')
+        function changeStatus() {
+            micElement.src = "./icon/mic-off.png"
+        }
+    </script>
 </body>
 </html>
