@@ -78,6 +78,17 @@
             cursor: pointer;
         }
 
+        .student-card{
+            display: block;
+            height: 20px;
+            padding: 10px;
+            width: 80%;
+            margin: 10px auto;
+            font-size: 20px;
+            border-radius: 30px;
+            text-align: center;
+        }   
+
         .footer{
             width: 100%;
             background-color: gray;
@@ -101,14 +112,18 @@
 </head>
 <body>
     <div class="card">
-        <input type="text" class="input" placeholder="Enter name">
-        <button class="btn btn-secondary">REMOVE</button>
-        <button class="btn btn-primary">ADMIT</button>
+        <input type="text" class="input" placeholder="Enter name" id="input-name">
+        <button class="btn btn-secondary" onclick="removeStudent()">REMOVE</button>
+        <button class="btn btn-primary" onclick="addStudent()">ADMIT</button>
     </div>
     <div class="container">
         <div class="banner">
             <input type="text" class="search-bar" placeholder="Search">
             <img src="./icon/search.png" alt="" class="search-icon">
+
+            <div class="students" id="students">
+
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -122,7 +137,30 @@
     </div>
 
     <script>
-        
+        const meetGroup = []
+        function loadMeet() {
+            const studList = document.getElementById('students')
+            studList.innerHTML = ""
+            for (let i = 0; i < meetGroup.length; i++) {
+                students.innerHTML += `<p class='student-card'> ${meetGroup[i]} </p>`;
+            }
+        }
+        loadMeet()
+
+        const inputElement = document.getElementById('input-name')
+
+        function addStudent() {
+            meetGroup.push(inputElement.value.toUpperCase());
+            inputElement.value = "";
+            loadMeet();
+        }
+
+        function removeStudent() {
+            const studIndex = meetGroup.indexOf(inputElement.value);
+            studIndex.value = "";
+            meetGroup.splice(studIndex, 1);
+            loadMeet();
+        }
     </script>
 </body>
 </html>
